@@ -73,3 +73,144 @@ conta.__init__(conta, 1, "Eric Clapton", 0.0, 500.0)
 ```py
 conta = Conta(1, "Eric Clapton", 0.0, 500.0)
 ```
+
+## Aula 3
+
+1 - Chalita decidiu aplicar o que aprendeu na aula sobre método em Python. Ele criou a classe Pessoa que recebe em seu "construtor" um nome e sobrenome e que declara o único método exibe_nome_e_sobrenome(). Vejamos o código que ele escreveu:
+```py
+class Pessoa:
+    def __init__(self, nome, sobrenome):
+        self.nome = nome
+        self.sobrenome = sobrenome
+
+    exibe_nome_e_sobrenome():
+        print("{0} {1}".format(self.nome, self.sobrenome))
+
+pessoa = Pessoa("Chalita", "Steppat")
+pessoa.exibe_nome_e_sobrenome()
+```
+Quantos erros há no código de Chalita?
+
+- __2__
+> Exato. Chalita não declarou o método com def, muito menos recebeu self como parâmetro.
+- 1
+- 3
+
+2 - Fernanda criou a classe Jogo com o método incrementa() que, ao ser chamado, atualizará o valor do atributo self.contador:
+```py
+class Jogo:
+
+    def incrementa(self):
+        contador+=1
+Então, ela realizou sem sucesso o seguinte teste:
+
+jogo = Jogo()
+jogo.incrementa()
+print(jogo.contador)
+```
+Marque a opção que possui o código de Fernanda corrigido para que o seu teste funcione.
+
+- A
+```py
+class Jogo:
+    def __init__(self):
+        self.contador = 0
+
+    def incrementa(self):
+        contador+=1
+```
+
+- __B__
+```py
+class Jogo:
+    def __init__(self):
+        self.contador = 0
+
+    def incrementa(self):
+        self.contador+=1
+```
+
+- C
+```py
+class Jogo:
+    def __init__():
+        self.contador = 0
+
+    def incrementa(self):
+        self.contador+=1
+```
+
+- D
+```py
+class Jogo:
+    def __init__(self):
+        contador = 0
+
+    def incrementa(self):
+        self.contador+=1
+```
+
+3 - Andreza declarou a classe Recibo que recebe em seu construtor um valor inicial. Vejamos a classe em uso:
+```py
+recibo1 = Recibo(50)
+recibo2 = Recibo(100)
+recibo3 = Recibo(200)
+recibo4 = recibo3
+recibo3 = None
+recibo1 = recibo3
+recibo4 = recibo1
+recibo3 = recibo2
+```
+Depois que todas as instruções forem executadas, marque as opções verdadeiras à respeito do estado das variáveis:
+
+- A variável recibo4 é diferente de None.
+- __A variável recibo3 apontará para um objeto Recibo com valor 100.__
+- __A variável recibo1 será None.__
+- As variáveis recibo1, recibo2, e recibo3 serão None.
+
+4 - Francisco precisa criar a classe chamada Sistema com os métodos le_entrada() e exibe_saida(). O primeiro, ao ser chamado, deve ler do teclado um texto qualquer e guardar internamente na propriedade texto. Já o segundo método, quando for chamado, deve exibir o valor de texto. Exemplo de uso:
+```py
+sistema = Sistema()
+sistema.le_entrada()
+sistema.exibe_saida()
+```
+Marque a única opção que materializa corretamente a classe.
+
+- __A__
+```py
+class Sistema:
+    def __init__(self):
+        self.texto = ''
+
+    def le_entrada(self):
+        self.texto = input()
+
+    def exibe_saida(self):
+        print(self.texto)
+```
+
+- B
+```py
+class Sistema:
+    def __init__(self):
+        self.texto = ''
+
+    def le_entrada(self):
+        self.texto = input()
+
+    def exibe_saida():
+        print(self.texto)
+```
+
+- C
+```py
+class Sistema:
+    def __init__(self):
+        self.texto = ''
+
+    def le_entrada(self):
+        self.texto = input()
+
+    def exibesaida(self):
+        print(self.texto)
+```
