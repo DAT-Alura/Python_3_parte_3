@@ -23,3 +23,53 @@
 - Basta que Paulo consuma uma classe que representa a informação a ser cadastrada pelo campo.
 - __"Copie o código de validação que está no formulário ABCD."__
 > Correto! Resposta típica de quem usa o paradigma procedural para não arriscar inserir erros em códigos que já estão funcionando ou em produção.
+
+## Aula 2
+
+1 - A partir do conhecimento adquirido de classes, leia as frases abaixo e responda a opção correta.
+1.Uma classe é uma especificação de um tipo, definindo valores e comportamentos.
+2.Um objeto é uma instância de uma classe onde podemos definir valores para seus atributos.
+3.Para criar uma instância, é obrigatório preencher os valores de todos os atributos.
+4.Uma boa analogia é considerar a classe como a receita para a criação de algum prato; por exemplo, um delicioso bolo de cenoura ;-)
+
+- Todas as opções estão corretas.
+- A opção 1 é a única correta.
+- __A opção 3 é a única errada.__
+- As opções 2 e 3 estão erradas.
+
+2 - Em orientação a objetos, como chamamos as características de uma classe?
+
+- Argumento.
+- __Atributo.__
+> Correto! Os atributos são as características que especificam uma classe.
+- Variável.
+- Parâmetro.
+
+3 - Considere o código abaixo, que declara a classe Conta.
+```py
+class Conta:
+
+    def __init__(self, numero, titular, saldo, limite):
+        self.numero = numero
+        self.titular = titular
+        self.saldo = saldo
+        self.limite = limite
+```
+Selecione a alternativa que cria um objeto Conta com valores para os atributos número, titular, saldo e limite.
+
+
+- A
+```py
+conta = Conta()
+```
+
+- D
+```py
+conta = Conta()
+conta.__init__(conta, 1, "Eric Clapton", 0.0, 500.0)
+```
+
+- __C__
+```py
+conta = Conta(1, "Eric Clapton", 0.0, 500.0)
+```
