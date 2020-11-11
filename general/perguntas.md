@@ -214,3 +214,80 @@ class Sistema:
     def exibesaida(self):
         print(self.texto)
 ```
+
+## Aula 4
+
+### 1 - Ao usar o prefixo __ no nome do atributo o Python ...
+
+A - ... automaticamente inicializa os atributos com os valores padrões para cada tipo.
+
+__B__ - ... dá um nome diferente para o atributo da classe alterando em todos os lugares.
+> Correto! Como vimos, o atributo recebe o nome da classe como prefixo.
+
+C - ... apaga o atributo já que é usado internamente apenas.
+
+D - ... transforma o atributo em métodos de acesso.
+
+### 2 - Veja a classe Retangulo abaixo:
+
+```py
+class Retangulo:
+
+    def __init__(self, x, y):
+        self.__x = x
+        self.__y = y
+        self.__area = x * y
+
+    def obter_area(self):
+        return self.__area
+```
+
+Assumindo que a classe foi carregada corretamente, podemos executar o seguinte código:
+
+```py
+r = Retangulo(7,6)
+r.area = 7
+r.obter_area()
+```
+
+Qual é o resultado da execução? Se tiver com dúvida, faça o teste!
+
+A - erro de execução
+
+B - 7
+
+C - 6
+
+D - 42
+> Correto! A classe Retangulo está correta e define os atributos __x, __y e __area, além do construtor e o método obter_area(). Nada impede então criar um objeto:
+>
+> ```py
+> r = Retangulo(7,6)
+> ```
+>
+> Agora, se você tenta acessar um atributo area, que na verdade não declaramos, o Python cria automaticamente um novo atributo e inicializa com o valor 7:
+> 
+> ```py
+> r.area = 7
+> ```
+>
+> Na linha em cima o objeto ganha um novo atributo com o nome area. Ou seja, temos um atributo __area E um novo com o nome area. No entanto, ao chamar r.obter_area(), continuamos acessar o atributo __area que foi inicializado com o produto de 7*6!
+
+### 3 - Quais vantagens identificamos ao colocar a funcionalidade transferir na classe Conta?
+
+__A__ - Melhoramos a legibilidade do nosso código.
+> Correto! Repare que fica claro para quem lê o código qual é a nossa intenção:
+>
+> ```py
+> conta_origem.transfere(300.0, conta_destino)
+> ```
+>
+> A legibilidade é um ponto muito relevante pois, no dia a dia, o programador gasta muito mais tempo lendo código do que escrevendo!
+
+__B__ - Facilitamos a manutenção pois a funcionalidade (o código) está encapsulado.
+> Correto! O código dessa funcionalidade está dentro do método transfere. Dessa forma, se for preciso, basta alterar a implementação desse método.
+
+__C__ - Melhoramos a organização do nosso código, pois as funcionalidades relacionadas à uma Conta estão dentro da classe.
+> Correto! Isso é um ponto fundamental do paradigma OO. Concentramos as funcionalidades relacionadas à uma Conta dentro da classe Conta. Assim diminuímos a chance de criar código duplicado.
+
+D - Melhoramos o desempenho pois estamos usando objetos e métodos.
