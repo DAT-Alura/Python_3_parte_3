@@ -291,3 +291,98 @@ __C__ - Melhoramos a organização do nosso código, pois as funcionalidades rel
 > Correto! Isso é um ponto fundamental do paradigma OO. Concentramos as funcionalidades relacionadas à uma Conta dentro da classe Conta. Assim diminuímos a chance de criar código duplicado.
 
 D - Melhoramos o desempenho pois estamos usando objetos e métodos.
+
+## Aula 5
+
+### 1 - Tenho alguns jogos e quero representá-los usando Python 3. Para isto já vimos que podemos criar uma classe representando este conceito do Jogo. Imagine que cada jogo tem um nome, e a quantidade de vezes que joguei o mesmo.
+
+```py
+class Jogo:
+    def __init__(self, nome, vezes_que_joguei):
+        self.__nome = nome
+        self.__vezes_que_joguei = vezes_que_jogueiCOPIAR CÓDIGO
+```
+
+Apenas com este código, eu não consigo ver quantas vezes joguei um jogo criado. Como eu posso fazer para acessar esta informação?
+
+__A__ - Criar um método para devolver o valor desejado.
+> Correto! Sempre que eu quiser acessar algo do objeto, criarei um método.
+
+B - Guardar o valor de quantas vezes joguei numa variável antes de passar para o construtor.
+
+C - Criar uma função fora da classe para mostrar o valor.
+
+D - Imprimir o valor no momento que eu criar meu objeto.
+
+### 2 - Ainda trabalhando com a minha classe Jogo do exercício anterior, meu problema agora é alterar a quantidade de vezes que joguei o meu jogo e do jeito que criei meus atributos, o python não me aconselha a alterar diretamente o valor de __vezes_que_joguei, até porque criei os atributos privados. De que forma eu posso alterar o valor do atributo __vezes_que_joguei sem ferir o encapsulamento?
+
+A - Definir o atributo como public, sem o __ na frente.
+
+__B__ - Criar um método na classe para alterar o valor.
+> Correto! Reforçando que tanto para acessar quanto para alterar características de um objeto precisamos criar métodos.
+
+C - Acessar a variável disponibilizada pelo python Jogo__vezesque_joguei e alterar seu valor.
+
+D - Criar outro objeto com o valor diferente.
+
+### 3 - Já vimos que podemos criar getters e setters para acessar e alterar o valor de atributos privados. No python existe uma forma mais comum de criar estes getters e setters, diferente de Java, onde se coloca get ou set como prefixo de um método, usamos Propriedades. Escolha a opção que representa corretamente Propriedades para acessar dados no python.
+
+A -
+```py
+@property
+def prop_nome():
+    return self.__nome
+```
+
+B -
+```py
+@property
+def nome():
+    return self.__nome
+```
+
+__C__ -
+```py
+@property
+def nome(self):
+    return self.__nome
+```
+> Correto! Esta é a forma correta de criar uma property.
+
+D -
+```py
+@property
+def nome():
+    self.__nome
+```
+
+### 4 - Vimos no exercício anterior como podemos definir uma propriedade para acessar um atributo privado no python 3. E se quisermos alterar os atributos através de uma propriedade, qual o jeito correto de fazer?
+
+A -
+```py
+@property.setter
+def nome(self):
+    self.__nome = nome
+```
+
+__B__ -
+```py
+@nome.setter
+def nome(self, nome):
+    self.__nome = nome
+```
+> Correto! Desta forma conseguimos implementar um setter no Python.
+
+C -
+```py
+@property
+def nome(self):
+    self.__nome = nome
+```
+
+D -
+```py
+@property.setter
+def nome(self, nome):
+    return self.__nome
+```
