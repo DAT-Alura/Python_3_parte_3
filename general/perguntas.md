@@ -386,3 +386,195 @@ D -
 def nome(self, nome):
     return self.__nome
 ```
+
+## Aula 6
+
+### 1 - Paulo é o novo estagiário da Caelum. Em um dia de inspiração, encontrou o seguinte código em um projeto que, embora crítico, está funcionando sem nenhum bug relatado há anos:
+
+```py
+class Conta:
+
+    def __init__(self, numero, saldo, limite ):
+        self.__numero = numero
+        self.__saldo = saldo
+        self.__limite = limite
+        self.__tarifaTransferencia = 8.0
+
+
+    def saca(self,valor):
+
+        if valor < (self.__saldo + self.__limite):
+                self.__saldo -= valor
+                print("Saque efetuado.")
+        else:
+                print("Saldo insuficiente.")
+
+
+
+    def transfere(self, valor, destino):
+
+
+            valorTotal = valor + self.__tarifaTransferencia
+
+           if valorTotal < (self.__saldo + self.__limite):
+
+                self.__saldo -= valorTotal
+                destino.deposita(valor)
+
+                print("Transferência efetuada.")
+            else:
+                print("Saldo insuficiente.")
+
+
+    # outros métodos omitidos...COPIAR CÓDIGO
+```
+
+Como líder técnico da empresa, você precisa inspecionar as modificações que Paulo fez na classe anterior e ajudá-lo no desenvolvimento profissional. Analise o código do Paulo:
+
+```py
+class Conta:
+    def __init__(self, numero, saldo, limite):
+        self.__numero = numero
+        self.__saldo = saldo
+        self.__limite = limite
+        self.__tarifaTransferencia = 8.0
+
+    #NOVO MÉTODO AQUI
+    def temSaldoDisponivelPara(self, valor):
+        return valor < (self.__saldo + self.__limite)
+
+
+    def saca(self, valor):
+
+        if self.temSaldoDisponivelPara(valor):
+            self.__saldo -= valor
+            print("Saque efetuado.")
+        else:
+            print("Saldo insuficiente.")
+
+
+    def transfere(self, valor, destino):
+
+
+        valorTotal = valor + self.__tarifaTransferencia
+
+        if self.temSaldoDisponivelPara(valorTotal):
+
+            self.__saldo -= valorTotal
+            destino.deposita(valor)
+
+            print("Transferência efetuada.")
+        else:
+            print("Saldo insuficiente.")
+```
+
+A - Paulo criou mais complexidade ao projeto ao adicionar mais métodos na classe.
+
+__B__ - Paulo pode melhorar ainda mais o código.
+> Correto! Embora o método criado evite a duplicação de códigos, ele não será chamado por nenhuma outra classe do sistema. Logo, não faz sentido deixá-lo público e expô-lo na interface pública da classe.
+
+C - Paulo não deveria mexer em código que já funciona.
+
+D - Paulo fez uma modificação que não influenciou nem positivamente nem negativamente no projeto.
+
+### 2 - Vimos que o Python segue uma convenção para deixar claro que um atributo ou método é considerado privado.
+
+Referente a convenção, veja as seguintes afirmações.
+
+Dentro de uma classe Conta ...
+
+a) ... o atributo __saldo se torna _Conta__saldo.
+
+b) ... o método __pode_sacar() se torna _Conta__pode_sacar().
+
+c) ... o construtor init se torna __init__.
+
+d) ... a referencia self se torna __self.
+
+Quais das afirmativas estão corretas?
+
+A - c) e d)
+
+__B__ - a) e b)
+> Correto! Usando __ alterar o nome do atributo ou método, colocando o nome da classe como prefixo.
+
+C - a), b) e d)
+
+D - b) e d)
+
+### 3 - Um desenvolvedor Java acabou de conhecer Python e gostaria de saber como definir métodos privados nessa linguagem.
+
+Assinale a alternativa que transforma o método a seguir em privado:
+
+```py
+def temSaldoDisponivelPara(self, valor):
+    return valor < (self.__saldo + self.__limite)COPIAR 
+```
+
+A -
+```py
+def private temSaldoDisponivelPara(self, valor):
+```
+
+B -
+```py
+@private
+def temSaldoDisponivelPara(self, valor):
+```
+
+C -
+```py
+def _temSaldoDisponivelPara(self, valor):
+```
+
+__D__ -
+```py
+def __temSaldoDisponivelPara(self, valor):
+```
+> Correto! A sintaxe é exatamente essa. Começando por dois underscores(_)
+
+### 4 - Sabe-se que na classe Conta existe um método estático que pode ser visto abaixo:
+
+```py
+@staticmethod
+def codigo_banco():
+    return "001"
+```
+
+Qual das alternativas indica a forma de chamar esse método estático?
+
+A -
+```py
+Conta(123,"Nico", 55.5, 1000.0).codigo_banco()
+```
+
+__B__ -
+```py
+Conta.codigo_banco()
+```
+> Correto! Quando definimos um método estático, ou seja, de classe, podemos chamá-lo sem a necessidade de criação de um objeto antes. Portanto a sintaxe para isso é bastante simples, bastando chamar um método depois do nome da classe.
+>
+> ```py
+> Conta.codigo_banco()
+> ```
+
+C -
+```py
+Conta(self).codigo_banco()
+```
+
+D -
+```py
+Conta().codigo_banco()
+```
+
+### 5 - Um desenvolvedor acabou de aprender sobre métodos estáticos e está bastante entusiasmado com essa possibilidade. Das alternativas a seguir qual representa melhor as recomendações sobre uso desse recurso?
+
+A - Métodos estáticos dizem respeito a métodos do objeto (instância) em vez de classe.
+
+B - Métodos estáticos favorecem o reaproveitamento de código no sistema.
+
+__C__ - Métodos estáticos devem ser usados com cautela caso contrário pode-se fugir do paradigma da orientação a objetos.
+> Correto! Métodos estáticos tem um cheiro de linguagem procedural já que independe de um objeto para ser chamado e não manipula informações/atributos de objetos. Deve ser usado com bastante cautela!
+
+D - Deve-se sempre preferir usar métodos estáticos a métodos não estáticos.
